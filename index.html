@@ -31,6 +31,25 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
   <script>
 
+    function fetchChuckNorrisJoke () {
+      const url = `https://api.chucknorris.io/jokes/random/`;
+      axios.get(url)
+        .then (response => response.data)
+        .then (chuckNorris => { { 
+            console.log('data decoded from JSON:',chuckNorris);
+
+
+            const chuckNorrisHtml = `
+                <img src="${chuckNorris.icon_url}" />
+                <p><strong>${chuckNorris.value}</strong></p>
+                `;
+
+                document.querySelector('#chuck-norris').innerHTML = chuckNorrisHtml;
+        }})
+    }
+
+    fetchChuckNorrisJoke();
+
   </script>
 </body>
 
